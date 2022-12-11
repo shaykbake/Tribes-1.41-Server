@@ -6,6 +6,9 @@ This is a copy of the "Original" Tribes 1.41 setup as patched and distributed or
 
 What I've done is cleaned up and organized it a little bit. Plus, I've made some edits to `console.cs` that I feel make it run the game a little better for anyone planning to expand it with custom maps and mods. Essentially, a server setup.
 
+### "base" Directory
+The `base` directory has been renamed to `GameData`, and all but the `missions` and `voices` sub-directories within it have been compiled into respective `*.zip` files.
+
 ### "base" Mod Changes
 The `base` mod that was distributed with 1.40/1.41 originally is still intact as `GameData/scripts.zip`, but I've taken the files and modified them slightly in the `mods/base.zip`:
 * to restore the original item listing in inventory stations to match the order as they were in the 1.11 base mod
