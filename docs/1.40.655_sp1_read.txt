@@ -1,0 +1,205 @@
+Tribes 1.40.655 Service Pack 1 - Client fixes for Tribes 1.40.655
+Collected by Plasmatic 4/4/2011
+
+Includes:
+1. Master server patch
+2. Video Lag fix
+3. The open call map fix
+4. Full screen fix
+5. Flag hud fix
+6. IceridgeLT fix
+7. Hud position fix
+8. FOV change
+9. Terrain Smoothing change
+10. Mission .dsc syntax error fix
+
+9/30/2011 10:27PM
+11. Included opencall 3 map pack
+12. Added Information on all the fixes
+
+
+
+
+Installation
+1. Back up console.cs
+2. Unzip to your Tribes 1.40 directory (should contain Tribes.exe) with
+directory structure and overwrite existing console.cs file.
+3. Restart Tribes and enjoy!
+
+Issues?
+$pref:terrainlodamount = 0; may cause video lag on lesser cards. 
+To change:
+1. Host a game and spawn. Move where you can see terrain. 
+2. Hit the ` key in game to open console. 
+3. Copy/ paste "$pref:terrainlodamount = 0.8;" without quotes into console, hit enter. The terrain should visibly change at distance.
+4. Hit up arrow to repeat last entered command, and change the 0.8 to a value that suits you. Lower numbers = more accurate.
+5. Remember this number and change it in config\autoexec.cs
+
+Issuessss.
+$pref::playerfov = 110; may be changed in the same manner. 
+
+
+Thanks to Greyhound, Lemon, Opsayo, Shodan, and anyone else I forgot for sharing these fixes.
+More information at http://www.tribalwar.com/forums/showthread.php?t=630310
+and http://www.annihilation.info/forum/viewtopic.php?f=1&t=8595
+
+Enjoy!
+-Plasmatic
+plasmatic@gmail.com or icq 77161332
+questions at www.annihilation.info/forum
+
+
+
+
+
+Specific information on the fixes:
+
+1. Master server patch.	
+	$Server::CurrentMaster = "0";$Server::MasterAddressN0 = "t1m1.tribes0.com:28000 t1m1.masters.tribesmasterserver.com:28000 t1m1.pu.net:28000 skbmaster.ath.cx:28000 kigen.ath.cx:28000 t1m1.masters.dynamix.com:28000";
+
+2. Video Lag fix. 
+	$pref::screensize = 1; For you ati users. Fixes sporadic video lag.
+
+3. The open call map fix by Shodan
+	So far the maps, that do not work in the above distribution, are:
+	Opencall
+	
+	    Turbulence
+	    SuperCross_2
+	    Death_Row
+	    TheLongWalk
+	    Massive_Sides
+	    OneSmallStep (OneSmallStep.ted is not converted to zip)
+	    Slipstream
+	
+	This is because these files have no [Mapname].zip file. (The .vol of these in the 1.30 Distribution were empty.)
+	To fix this create an empty zip-file named after the map (e.g. "Turbulence.zip" [22 bytes]) and copy it to the opencall directory (e.g. "c:\tribes1.40\opencall\" ).
+	
+	Open call 2
+	
+	    only Hildebrandt works.
+	
+	
+	
+	This is, because nobody took care of converting the .ted and .vol files to .zip-Format and putting them into the distribution.
+	
+	fix:
+	get a copy of the "Open Call 2" Maps, unpack each .ted and .vol file on its own and then zip them. All unpacked .vol files will be named [Mapname].zip.
+	All .ted files will keep the name [Mapname].ted!
+	
+	If nobody beats me to it, I will create a fixed mappack containing the missing files. Anybody wants to host that pack? I am to lazy to register some webspace right now.
+	
+	Since there are other map packs and mods out there, I think some of them might have the same problems with the 1.40 client as Opencall, so please leave a note in this thread, if you find this bug in other maps and mods.
+
+4. Full screen fix: by Lemon 
+	delete or comment out (//) line 332 in console.cs
+	
+	this is 331 and 332
+	
+	Code:
+	
+	// GDCHACK : don't go fullscreen on startup (currently borked in webpage) 
+	   $pref::VideoFullScreen = "FALSE";
+
+5. Flag hud fix: by Lemon
+	This fix applies to players on active mode servers like US Base and The Community.
+	
+	    The built-in 1.40 flag hud doesn't update team scores when you join a server mid-game.
+	    In config\Core\Team.cs make the following change.
+	
+	
+	
+	Instead of this:
+	Code:
+	
+	function remoteTeamScore( %sv, %team, %score ) {
+		//$Team::Score[%team] = %score;
+	}
+	
+	
+	Make it look like this:
+	Code:
+	
+	function remoteTeamScore( %sv, %team, %score ) {
+		$Team::Score[%team] = %score;
+	}
+
+6. IceridgeLT Fix:	by opsayo 
+	go into lt/missions
+	
+	iceridegLT.zip -> iceridgeLT.zip
+	
+7. HUD position fix:	by GreyHound 
+	Code:
+	
+	/* 
+		Huds only get respositioned when PlayGui is loaded, 
+		so starting and leaving without playing will fuck up your hud setup.
+		
+		This standalone fix prevents that.
+		
+		Make sure this is loaded by 
+		a) naming it  "HudMessupFix.acs.cs" and put into config/modules ... idiot proof way.
+		or b) putting into autoexec.cs
+		or c) exec it some other way
+		
+		GreyHound / Hunden
+	*/
+	
+	$HudMessupFix::DoExport = false;
+	
+	//catch the case that restores the huds, if that happened, it's save to export them later
+	function HudMessupFix::OnGuiOpen( %gui ) after Hud::OnGuiOpen {
+		if ( %gui == "playGui" )
+			$HudMessupFix::DoExport = true;
+	}
+	
+	//make sure the shizzle just exports under our conditions
+	function HudMessupFix::OnExit() before Hud::OnExit 
+	{
+		if($HudMessupFix::DoExport) //fine, don't halt
+			return;
+		
+		echo("Sucky behavior detected and prevented.");
+		halt;
+	}
+	
+	.... damn this got annoying over time.
+	
+	Feel free to do the fix at it's source, in "core/Hud.cs" ... it's basicly a copy paste if you know what you're doing
+
+8. FOV change
+	$pref::playerfov = 110; 
+	Default 90. Increases field of view to compensate for wide screen monitors. 
+
+9. Terrain Smoothing change
+	$pref:terrainlodamount = 0; 
+	Default is 1. Decreases terrain warping at the expense of fps. 
+
+10. Mission .dsc syntax error fix: by Plasmatic
+	The following .dsc files have syntax errors, and don't show up in the create server gui.
+	Misty links had multiple characters Tribes does not understand.
+	opencall/missions/Sulfurious.dsc
+	opencall/missions/Spartacus'sGauntlet.dsc
+	opencall/missions/OneSmallStep.dsc
+	opencall/missions/OlympusMons.dsc
+	opencall/missions/MidnightMayhem.dsc
+	opencall/missions/DarkAurora.dsc
+	opencall/missions/CanyonCrusade.dsc
+	lt/missions/MistyLinksLT.dsc
+	opencall2/Integration.dsc
+	
+Unmentioned misc:
+	$pref::OpenGL::useMultiTe xturing = "True"; Increases fps on some cards.
+	$pref::OpenGL::flushAfter Passes = "False"; Increases fps on some cards.
+	
+11. Added opencall3 map pack 
+	read the included read me file for information
+	
+12. Removed FOV change (see number 8) as it was overriding other stupid settings. 
+
+13. End of line. JUMP! 
+
+
+
+

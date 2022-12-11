@@ -1,0 +1,8 @@
+To install:
+- Make a backup of your "Tribes.exe" before you extract this.
+- Extract "Tribes.exe" to your Tribes folder.
+- Create a 1.41 shortcut just like for your 1.40 shortcut.
+  - If you did this right, your old shortcut should work.
+  - If you did this right, your Tribes should show "Version 1.41" in the bottom right when you start Tribes.
+
+All plugins that worked with 1.40 will work with 1.41. You can use 1.41 on 1.11, 1.30 (LastHope), and even 1.40 servers. *NOTE* If you are using 1.41, you no longer need to use the HMCrasher.dll plugin.

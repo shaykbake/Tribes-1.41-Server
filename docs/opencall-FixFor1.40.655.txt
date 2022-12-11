@@ -1,0 +1,21 @@
+This fix is for Tribes 1 clientversion 1.40.655 only!
+Lower versions do not need this fix!!!!
+
+Installation:
+Backup your opencall and opencall2 folders from your
+Tribes 1.40 directory. (e.g. "c:\tribes1.40\")
+Unzip the archive to your Tribes 1.40 directory
+with directory structure and overwrite existing
+files.
+
+Uninstall:
+Delete the folders opencall and opencall2 in the
+Tribes 1.40 folder, then restore your backup.
+
+For additional Info about the problems with maps
+and client 1.40 check out:
+http://www.tribalwar.com/forums/showthread.php?t=619441
+
+Have fun with Tribes
+
+Shodan
