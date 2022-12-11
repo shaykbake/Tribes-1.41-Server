@@ -1,5 +1,6 @@
 // Tribes 1.41 console.cs
 // Reworked by Shayk-N'-Bake
+// https://github.com/shaykbake/
 
 // $console::logmode = 1; // log by default
 $BaseServerType = true; // list "base" under Server Type if nothing defined in $modList, otherwise will allow to be blank
