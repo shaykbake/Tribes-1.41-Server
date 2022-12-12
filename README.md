@@ -1,5 +1,5 @@
 # Tribes-1.41-Server
-Tribes 1.41 slightly modified for easer server setup.
+Tribes 1.41 slightly modified for easier server setup.
 
 ## Purpose
 This is a copy of the "Original" Tribes 1.41 setup as patched and distributed originally by Plasmatic, which is also available in nearly an unedited version in [the Tribes files repo](https://github.com/shaykbake/Tribes/blob/main/Installations/1.41/Tribes%201.41%20Original%20by%20Plasmatic.7z).
