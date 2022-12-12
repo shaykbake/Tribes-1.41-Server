@@ -54,13 +54,13 @@ IF DEFINED ServerConfig (
 :run
 echo Starting %ServerMod% ...
 ping 1.1.1.1 -n 1 -w 2000 > nul
-START %exeName% +exec %ServerConfig% -mod %ServerMod% -fullscreen
+START %exeName% %ServerConfig% %ServerMod% -fullscreen
 goto end
 
 :runBase
 echo Starting 1.41 Vanilla ...
 ping 1.1.1.1 -n 1 -w 2000 > nul
-START %exeName% +exec %modConfig% -fullscreen
+START %exeName% %modConfig% -fullscreen
 goto end
 
 :site
