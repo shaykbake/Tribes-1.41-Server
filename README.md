@@ -28,4 +28,4 @@ The `Tribes - Load Mod Listen Windowed.bat` batch file will launch a prompt simi
 The `Tribes - Play Windowed.bat` batch file will run `Tribes.exe` without any mod options but will also attach the `-fullscreen` startup argument to start the game in windowed mode. If you simply run `Tribes.exe` directly, it will start in whatever mode (windowed or full screen) that it was in when you last closed it.
 
 ## Discussions / Support
-If you have any issues, suggestions or corrections that you find should be made, you can reach out in the [Discussions](https://github.com/shaykbake/Tribes-1.41-Server/discussions) for this repo, at the [{LS} forums](https://longshots.mk0.pw/forums/), or at the [{LS} Discord](https://longshots.mk0.pw/discord/).
+If you have any issues, suggestions or corrections that you find should be made, you can reach out in the [Discussions](https://github.com/shaykbake/Tribes-1.41-Server/discussions) for this repo, at the [{LS} forums](https://longshots.eu.org/forums/), or at the [{LS} Discord](https://longshots.eu.org/discord/).
